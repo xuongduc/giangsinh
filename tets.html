@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Cassette Animation</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .cassette-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: #222;
+            border: 8px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cassette {
+            position: absolute;
+            width: 80%;
+            height: 50%;
+            top: 25%;
+            left: 10%;
+            background: linear-gradient(145deg, #555, #888);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .tape {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            top: 40%;
+            background: #111;
+        }
+
+        .spool {
+            position: absolute;
+            width: 50px;
+            height: 52px;
+            background: #222;
+            border: 5px solid white;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .spool.left {
+            left: 15%;
+            
+        }
+
+        .spool.right {
+            right: 15%;
+            
+        }
+
+        .animation-left{
+            animation: spin 1s linear infinite;
+        }
+
+        .animation-right{
+            animation: spin-reverse 1s linear infinite;
+        }
+        
+
+        @keyframes spin {
+            0% {
+                transform: translateY(-50%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-50%) rotate(360deg);
+            }
+        }
+
+        @keyframes spin-reverse {
+            0% {
+                transform: translateY(-50%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-50%) rotate(-360deg);
+            }
+        }
+
+        .label {
+            position: absolute;
+            width: 60%;
+            height: 20%;
+            top: 40%;
+            left: 20%;
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button {
+            width: 30px;
+            height: 30px;
+            background: red;
+            border: 3px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
+        .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .button active{
+        width: 100px;
+        height : 50px;
+
+    }
+
+    .button::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 18px solid white;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+
+
+        .button-text {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="cassette-container">
+    
+        <div class="cassette">
+            <div class="tape"></div>
+            <div class="spool left"></div>
+            <div class="spool right"></div>
+            <div class="label">Tặng đồ đáng ghéc</div>
+        </div>
+        <div class="button-container">
+                <button class="button">▶</button>
+                <div class="button-text">Push Here To Play / Pause</div>
+    </div>
+        
+    </div>
+
+    <audio id = "click" src = "Clicking.mp3" preload = "auto"></audio>
+    <audio id = "chuc" src = "chuc.mp3"></audio>
+    <script src = "func.js"> </script>
+</body>
+</html>
